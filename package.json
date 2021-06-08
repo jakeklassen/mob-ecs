@@ -1,0 +1,62 @@
+{
+  "name": "@jakeklassen/mob-ecs",
+  "version": "0.1.0",
+  "description": "Entity Component System",
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "exports": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "engines": {
+    "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakeklassen/mob-ecs.git"
+  },
+  "scripts": {
+    "benchmark": "ts-node --project tsconfig.benchmark.json",
+    "docs": "typedoc --out docs --exclude \"**/*+(index|.test|.spec|.e2e).ts\" src/",
+    "demos": "parcel demos/*.html",
+    "postdocs": "cp jekyll.config.yml docs/config.yml && touch docs/.nojekyll",
+    "lint": "eslint src --ext .js,.cjs,.ts --config .eslintrc.cjs",
+    "prebuild": "yarn run clean",
+    "build": "yarn run lint && tsc --project tsconfig.json",
+    "build:watch": "nodemon --exec 'yarn run build || exit 1'",
+    "test": "jest",
+    "pretest:coverage": "yarn run clean",
+    "test:coverage": "jest --coverage",
+    "clean": "rimraf dist"
+  },
+  "author": "Jake Klassen <jklassendev@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "ecs",
+    "gamedev",
+    "entity component system",
+    "typescript"
+  ],
+  "devDependencies": {
+    "@types/benchmark": "^2.1.0",
+    "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^15.12.2",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
+    "benchmark": "^2.1.4",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.4",
+    "lodash": "^4.17.15",
+    "nodemon": "^2.0.1",
+    "parcel": "^2.0.0-beta.3.1",
+    "prettier": "^2.3.1",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typedoc": "^0.20.36",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {}
+}
